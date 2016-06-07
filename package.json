@@ -1,0 +1,28 @@
+{
+  "name": "some-http-error",
+  "version": "0.0.1",
+  "description": "A javascript error creator for some often used HTTP error",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js",
+    "test:watch": "mocha --watch test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DremyGit/some-http-error.git"
+  },
+  "keywords": [
+    "http",
+    "error"
+  ],
+  "author": "Dremy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DremyGit/some-http-error/issues"
+  },
+  "homepage": "https://github.com/DremyGit/some-http-error#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
