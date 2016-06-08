@@ -72,7 +72,7 @@ The basic HttpError object constructor.
 + statusCode: `400`
 + message: `Bad Request`
 
-##### HttpError.Unauthorized(message)
+##### HttpError.UnauthorizedError(message)
 
 + statusCode: `401`
 + message: `Unauthorized`
@@ -87,7 +87,7 @@ The basic HttpError object constructor.
 + statusCode: `404`
 + message: `Not Found`
 
-##### HttpError.MethodNotAllowed(message)
+##### HttpError.MethodNotAllowedError(message)
 
 + statusCode: `405`
 + message: `Method Not Allowed`

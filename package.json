@@ -1,6 +1,6 @@
 {
   "name": "some-http-error",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A javascript error creator for some often used HTTP error",
   "main": "index.js",
   "scripts": {

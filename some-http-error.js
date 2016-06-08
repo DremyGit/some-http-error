@@ -19,7 +19,7 @@ HttpError.BadRequestError = function (message) {
   HttpError.call(this, 400, 'BadRequestError', message);
 };
 
-HttpError.Unauthorized = function (message) {
+HttpError.UnauthorizedError = function (message) {
   message = message || 'Unauthorized';
   HttpError.call(this, 401, 'UnauthorizedError', message);
 };
@@ -34,7 +34,7 @@ HttpError.NotFoundError = function (message) {
   HttpError.call(this, 404, 'NotFoundError', message);
 };
 
-HttpError.MethodNotAllowed = function (message) {
+HttpError.MethodNotAllowedError = function (message) {
   message = message || 'Method Not Allowed';
   HttpError.call(this, 405, 'MethodNotAllowedError', message);
 };
