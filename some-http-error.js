@@ -26,7 +26,7 @@ HttpError.UnauthorizedError = function (message) {
 
 HttpError.ForbiddenError = function (message) {
   message = message || 'Forbidden';
-  HttpError.call(this, 403, 'ForBiddenError', message);
+  HttpError.call(this, 403, 'ForbiddenError', message);
 };
 
 HttpError.NotFoundError = function (message) {

@@ -1,11 +1,12 @@
 {
   "name": "some-http-error",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A javascript error creator for some often used HTTP error",
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js",
-    "test:watch": "mocha --watch test.js"
+    "test:watch": "mocha --watch test.js",
+    "coverage": "NODE_ENV=test istanbul cover _mocha -- --recursive"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/DremyGit/some-http-error#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
     "mocha": "^2.5.3"
   }
 }
