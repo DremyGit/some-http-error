@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/DremyGit/some-http-error.png)](https://travis-ci.org/DremyGit/some-http-error)
 [![Coverage Status](https://coveralls.io/repos/github/DremyGit/some-http-error/badge.svg?branch=master)](https://coveralls.io/github/DremyGit/some-http-error?branch=master)
+
 A javascript error creator for some often used HTTP error
 
 ## Getting started
