@@ -44,12 +44,12 @@ function handle(req, res, next) {
 
     // ...
 
-    // Don't forget catch the error, and pass it to error handling
+    // Don't forget to catch the error, and pass it to error handling middleware
   }).catch(next);
 }
 ```
 
-### In error handing middleware
+### In error handling middleware
 ```js
 var HttpError = require('some-http-error');
 
@@ -70,27 +70,27 @@ function errorHandle(err, req, res, next) {
 
 The basic HttpError object constructor.
 
-##### HttpError.BadRequestError(message)
+##### HttpError.BadRequestError([message])
 
 + statusCode: `400`
 + message: `Bad Request`
 
-##### HttpError.UnauthorizedError(message)
+##### HttpError.UnauthorizedError([message])
 
 + statusCode: `401`
 + message: `Unauthorized`
 
-##### HttpError.ForbiddenError(message)
+##### HttpError.ForbiddenError([message])
 
 + statusCode: `403`
 + message: `Forbidden`
 
-##### HttpError.NotFoundError(message)
+##### HttpError.NotFoundError([message])
 
 + statusCode: `404`
 + message: `Not Found`
 
-##### HttpError.MethodNotAllowedError(message)
+##### HttpError.MethodNotAllowedError([message])
 
 + statusCode: `405`
 + message: `Method Not Allowed`
