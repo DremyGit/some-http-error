@@ -1,12 +1,6 @@
 var HttpError = require('./');
 var expect = require('chai').expect;
 
-describe('HttpError', function () {
-  it('is child class of Error', function () {
-    expect(new HttpError).to.be.an.instanceof(Error);
-  });
-});
-
 describe('BadRequestError', function () {
   it('is an instance of Error', function () {
     expect(new HttpError.BadRequestError).to.be.an.instanceof(Error);
@@ -75,5 +69,24 @@ describe('MethodNotAllowedError', function () {
     expect(methodNotAllowedError.message).to.equal('Method Not Allowed');
     expect(methodNotAllowedError.name).to.equal('MethodNotAllowedError');
     expect(methodNotAllowedError.statusCode).to.equal(405);
+  })
+});
+
+describe('Construct an http error', function () {
+  it('400 is an BadRequestError', function () {
+    var badRequestError = new HttpError(400);
+    expect(badRequestError).to.be.an.instanceof(Error);
+    expect(badRequestError).to.be.an.instanceof(HttpError);
+    expect(badRequestError.message).to.equal('Bad Request');
+    expect(badRequestError.name).to.equal('BadRequestError');
+    expect(badRequestError.statusCode).to.equal(400);
+  });
+  it('custom the error message', function () {
+    var badRequestError = new HttpError(404, 'This page is not found');
+    expect(badRequestError).to.be.an.instanceof(Error);
+    expect(badRequestError).to.be.an.instanceof(HttpError);
+    expect(badRequestError.message).to.equal('This page is not found');
+    expect(badRequestError.name).to.equal('NotFoundError');
+    expect(badRequestError.statusCode).to.equal(404);
   })
 });

@@ -1,8 +1,8 @@
 {
   "name": "some-http-error",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A javascript error creator for some often used HTTP error",
-  "main": "index.js",
+  "main": "some-http-error.js",
   "scripts": {
     "test": "mocha test.js",
     "test:watch": "mocha --watch test.js",

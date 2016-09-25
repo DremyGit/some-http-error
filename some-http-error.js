@@ -1,48 +1,60 @@
 'use strict';
 
+var errors = {
+  "400": "Bad Request",
+  "401": "Unauthorized",
+  "403": "Forbidden",
+  "404": "Not Found",
+  "405": "Method Not Allowed"
+};
+
 function extend(child, parent) {
   child.prototype = Object.create(parent.prototype);
   child.prototype.constructor = child;
   return child;
 }
 
-function HttpError(statusCode, name, message) {
-  this.message = message;
-  this.name = name;
-  this.statusCode = statusCode;
+function HttpError(statusCode, message) {
+  if (!statusCode || statusCode < 400 || statusCode > 405) {
+    throw new Error(statusCode + ' is not support');
+  }
+  this.statusCode = +statusCode;
+  this.name = messageToName(errors[statusCode]);
+  this.message = message || errors[statusCode];
   this.stack = (new Error()).stack;
 }
 extend(HttpError, Error);
 
-HttpError.BadRequestError = function (message) {
-  message = message || 'Bad Request';
-  HttpError.call(this, 400, 'BadRequestError', message);
-};
+HttpError.BadRequestError = function() {};
+HttpError.UnauthorizedError = function() {};
+HttpError.ForbiddenError = function() {};
+HttpError.NotFoundError = function() {};
+HttpError.BadRequestError = function() {};
 
-HttpError.UnauthorizedError = function (message) {
-  message = message || 'Unauthorized';
-  HttpError.call(this, 401, 'UnauthorizedError', message);
-};
-
-HttpError.ForbiddenError = function (message) {
-  message = message || 'Forbidden';
-  HttpError.call(this, 403, 'ForbiddenError', message);
-};
-
-HttpError.NotFoundError = function (message) {
-  message = message || 'Not Found';
-  HttpError.call(this, 404, 'NotFoundError', message);
-};
-
-HttpError.MethodNotAllowedError = function (message) {
-  message = message || 'Method Not Allowed';
-  HttpError.call(this, 405, 'MethodNotAllowedError', message);
-};
-
-for (var property in HttpError) {
-  if (HttpError.hasOwnProperty(property)) {
-    extend(HttpError[property], HttpError);
+for (var errorCode in errors) {
+  if (errors.hasOwnProperty(errorCode)) {
+    var message = errors[errorCode];
+    var errorName = messageToName(message);
+    HttpError[errorName] = (function (code) {
+      return function (message) {
+        HttpError.call(this, code, message);
+      }
+    })(errorCode);
+    extend(HttpError[errorName], HttpError)
   }
+}
+
+function messageToName(message) {
+  if (!message || typeof message !== 'string') {
+    return 'Error'
+  }
+  return message
+    .split(/\s+/)
+    .map(function(word) {
+      return word[0].toUpperCase() + word.substr(1, word.length - 1)
+    })
+    .concat('Error')
+    .join('')
 }
 
 module.exports = HttpError;

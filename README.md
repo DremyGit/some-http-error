@@ -66,9 +66,14 @@ function errorHandle(err, req, res, next) {
 
 ## API
 
-#### HttpError(statusCode, errorName, message)
+#### HttpError(statusCode[, message])
 
-The basic HttpError object constructor.
+The basic HttpError object constructor, and you can construct HttpError like this:
+
+```js
+new HttpError(404)
+new HttpError(404, 'This page is not found')
+```
 
 ##### HttpError.BadRequestError([message])
 
